@@ -7,9 +7,13 @@
 
 import Foundation
 
-//Se declara la informacion del JSON y el tipo de dato que se creo
-//Pareciera que esto termina siendo una variable global
-var landmarks: [Landmark] = load("landmarkData.json")
+@Observable
+class ModelData {
+    //Se declara la informacion del JSON y el tipo de dato que se creo
+    //Pareciera que esto termina siendo una variable global
+    var landmarks: [Landmark] = load("landmarkData.json")
+}
+
 
 // Se encargara de manejar la data que vendria en un json
 func load<T: Decodable>(_ filename: String) -> T {
