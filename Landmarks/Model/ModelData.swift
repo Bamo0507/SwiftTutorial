@@ -12,6 +12,22 @@ class ModelData {
     //Se declara la informacion del JSON y el tipo de dato que se creo
     //Pareciera que esto termina siendo una variable global
     var landmarks: [Landmark] = load("landmarkData.json")
+    
+    // Asi es como se declara un diccionario, se declara
+    // KEY, VALUE
+    // Recibo un string, devuelvo una lista de tipo LANDMARK
+    var categories: [String: [Landmark]]{
+        Dictionary(
+            // Agrupa la lista de `landmarks` en un diccionario
+            grouping: landmarks,
+            by: { $0.category.rawValue } // Usa el nombre de la categoría como clave del diccionario
+        )
+    }
+    
+    //Logramos filtrarlo todo en base a si es featured o no la landmark
+    var features: [Landmark] {
+           landmarks.filter { $0.isFeatured }
+       }
 }
 
 
